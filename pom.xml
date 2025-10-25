@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version> 5.11.4</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version> 2.18.2 </version>
+            <version> 2.18.2</version>
         </dependency>
 
 
@@ -71,7 +71,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.cli.MSTRunner</mainClass>
+                            <mainClass>org.example.graph.MSTRunner</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
