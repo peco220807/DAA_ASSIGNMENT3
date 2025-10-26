@@ -52,4 +52,8 @@ public class JSONReader {
             return null;
         }
     }
+
+    public static List<Graph> loadGraphs(String file) {
+        return null;
+    }
 }
