@@ -1,4 +1,4 @@
-package algorithms;
+package graph;
 public class DisjointSet {
     private final int[] parent;
     private final int[] rank;

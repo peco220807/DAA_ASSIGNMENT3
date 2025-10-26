@@ -1,7 +1,8 @@
 package algorithms;
+import graph.DisjointSet;
 import graph.Edge;
 import graph.Graph;
-import graph.MSTResult;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
