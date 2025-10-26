@@ -1,8 +1,8 @@
 package graph;
 public class Edge {
-    public final String from;  // Начальная вершина
-    public final String to;    // Конечная вершина
-    public final int weight;   // Вес рёбер
+    public final String from;
+    public final String to;
+    public final int weight;
     public Edge(String from, String to, int weight) {
         this.from = from;
         this.to = to;
@@ -36,7 +36,6 @@ public class Edge {
 
     @Override
     public int hashCode() {
-        // Сортировка вершин по алфавиту для унификации хеш-кода
         String first = from.compareTo(to) < 0 ? from : to;
         String second = from.compareTo(to) < 0 ? to : from;
         return first.hashCode() + second.hashCode() + Integer.hashCode(weight);
