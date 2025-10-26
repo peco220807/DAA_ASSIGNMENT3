@@ -1,38 +1,23 @@
 package graph;
+import java.util.HashMap;
+import java.util.Map;
+
 public class DisjointSet {
-    private final int[] parent;
-    private final int[] rank;
-    public DisjointSet(int n) {
-        parent = new int[n];
-        rank = new int[n];
-        for (int i = 0; i < n; i++) {
-            parent[i] = i;
-            rank[i] = 0;
-        }
+    private final Map<String, String> parent = new HashMap<>();
+    public void add(String x) {
+        parent.putIfAbsent(x, x);
     }
-
-    public int find(int x) {
-        if (parent[x] != x) {
-            parent[x] = find(parent[x]); // компрессия пути
+    public String find(String x) {
+        if (!parent.get(x).equals(x)) {
+            parent.put(x, find(parent.get(x)));
         }
-        return parent[x];
+        return parent.get(x);
     }
-
-    public boolean union(int a, int b) {
-        int rootA = find(a);
-        int rootB = find(b);
-        if (rootA == rootB) return false; // уже соединены
-        if (rank[rootA] < rank[rootB]) {
-            parent[rootA] = rootB;
-        } else if (rank[rootA] > rank[rootB]) {
-            parent[rootB] = rootA;
-        } else {
-            parent[rootB] = rootA;
-            rank[rootA]++;
+    public void union(String a, String b) {
+        String rootA = find(a);
+        String rootB = find(b);
+        if (!rootA.equals(rootB)) {
+            parent.put(rootA, rootB);
         }
-        return true;
-    }
-    public boolean same(int a, int b) {
-        return find(a) == find(b);
     }
 }
