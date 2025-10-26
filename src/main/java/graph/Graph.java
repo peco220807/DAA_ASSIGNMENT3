@@ -21,15 +21,13 @@ public class Graph {
             indexMap.put(vertex, i);
             adj.put(vertex, new ArrayList<>());
         }
-
         for (Edge e : edges) {
             adj.get(e.getFrom()).add(e);
             if (!directed) {
-                adj.get(e.getTo()).add(e);
+                adj.get(e.getTo()).add(new Edge(e.getTo(), e.getFrom(), e.getWeight()));
             }
         }
     }
-
     public String id() {
         return id;
     }
@@ -61,7 +59,6 @@ public class Graph {
     public boolean isDirected() {
         return directed;
     }
-
     @Override
     public String toString() {
         return "Graph{id='" + id + "', V=" + V() + ", E=" + E() + "}";
