@@ -1,5 +1,5 @@
 package model;
-import org.example.graph.Edge;
+import graph.Edge;
 import java.util.List;
 
 public class MSTOutput {
