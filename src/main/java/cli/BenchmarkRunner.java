@@ -26,7 +26,6 @@ public class BenchmarkRunner {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode resultsArray = mapper.createArrayNode();
 
-        // CSV header
         CSVWriter.initCSV("src/main/resources/results.csv");
 
         for (String file : files) {

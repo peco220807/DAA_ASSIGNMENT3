@@ -28,3 +28,5 @@ Results are exported to:
 - `output.json` — detailed per-graph results
 - `results.csv` — summary for tables or charts
 
+![img.png](img.png)
+

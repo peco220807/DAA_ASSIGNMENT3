@@ -32,7 +32,6 @@ public class CorrectnessTest {
             for (Graph graph : graphs) {
                 if (graph == null || graph.V() == 0) continue;
 
-                // Для огромных графов пропускаем проверку правильности, оставляем только замер времени
                 boolean skipValidation = graph.V() > 1000;
 
                 if (!isConnected(graph)) {
@@ -51,7 +50,6 @@ public class CorrectnessTest {
                             "MST total cost must be identical for graph " + graph.id());
                 }
 
-                // Можно вывести время для бенчмарка
                 System.out.println("Graph " + graph.id() + ": Kruskal " + kruskal.getExecutionTimeMs() + "ms, Prim " + prim.getExecutionTimeMs() + "ms");
             }
         }

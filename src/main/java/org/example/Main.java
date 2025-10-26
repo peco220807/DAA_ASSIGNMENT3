@@ -28,14 +28,12 @@ public class Main {
                 continue;
             }
 
-            // ---- Kruskal ----
             MSTResult resultKruskal = KruskalAlgorithm.run(graph);
             System.out.println("Kruskal result -> Cost: " + resultKruskal.getTotalCost() +
                     " | Time: " + resultKruskal.getExecutionTimeMs() + " nano sec" +
                     " | Ops: " + resultKruskal.getOperationsCount());
             JSONWriter.writeToJson("results/Kruskal_" + graph.id() + ".json", resultKruskal);
 
-            // ---- Prim ----
             MSTResult resultPrim = PrimAlgorithm.computeMST(graph);
             System.out.println("Prim result -> Cost: " + resultPrim.getTotalCost() +
                     " | Time: " + resultPrim.getExecutionTimeMs() + " nano sec" +

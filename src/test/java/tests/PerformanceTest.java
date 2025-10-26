@@ -12,10 +12,10 @@ public class PerformanceTest {
     @Test
     public void testPerformanceOfAlgorithms() {
         String[] files = {
-                "src/main/resources/datasets/graphs_small.json",
-                "src/main/resources/datasets/graphs_medium.json",
-                "src/main/resources/datasets/graphs_large.json",
-                "src/main/resources/datasets/graphs_extra_large.json"
+                "src/main/resources/graphs_small.json",
+                "src/main/resources/graphs_medium.json",
+                "src/main/resources/graphs_large.json",
+                "src/main/resources/graphs_extra_large.json"
         };
 
         for (String file : files) {
