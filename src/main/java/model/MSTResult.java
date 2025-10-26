@@ -1,6 +1,8 @@
 package model;
+
 import graph.Edge;
 import java.util.List;
+
 public class MSTResult {
     private final String algorithm;
     private final List<Edge> edges;
@@ -8,6 +10,7 @@ public class MSTResult {
     private final long executionTimeMs;
     private final long operationsCount;
     private final String graphId;
+
     public MSTResult(String algorithm, String graphId, List<Edge> edges,
                      int totalCost, long executionTimeMs, long operationsCount) {
         this.algorithm = algorithm;
@@ -17,24 +20,14 @@ public class MSTResult {
         this.executionTimeMs = executionTimeMs;
         this.operationsCount = operationsCount;
     }
-    public String getAlgorithm() {
-        return algorithm;
-    }
-    public List<Edge> getEdges() {
-        return edges;
-    }
-    public int getTotalCost() {
-        return totalCost;
-    }
-    public long getExecutionTimeMs() {
-        return executionTimeMs;
-    }
-    public long getOperationsCount() {
-        return operationsCount;
-    }
-    public String getGraphId() {
-        return graphId;
-    }
+
+    public String getAlgorithm() { return algorithm; }
+    public List<Edge> getEdges() { return edges; }
+    public int getTotalCost() { return totalCost; }
+    public long getExecutionTimeMs() { return executionTimeMs; }
+    public long getOperationsCount() { return operationsCount; }
+    public String getGraphId() { return graphId; }
+
     @Override
     public String toString() {
         return algorithm + " MST: cost=" + totalCost +

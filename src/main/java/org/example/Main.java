@@ -1,17 +1,48 @@
 package org.example;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import graph.Graph;
+import algorithms.KruskalAlgorithm;
+import algorithms.PrimAlgorithm;
+import io.JSONReader;
+import io.JSONWriter;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import model.MSTResult;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.println("===== MST Analysis Start =====");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = "+i);
+        String[] graphFiles = {
+                "src/main/resources/graphs_small.json",
+                "src/main/resources/graphs_medium.json",
+                "src/main/resources/graphs_large.json",
+                "src/main/resources/graphs_extra_large.json",
+        };
+
+        for (String file : graphFiles) {
+            System.out.println("\nLoading graph: " + file);
+            Graph graph = JSONReader.loadGraph(file);
+
+            if (graph == null) {
+                System.out.println("Failed to load file: " + file);
+                continue;
+            }
+
+            // ---- Kruskal ----
+            MSTResult resultKruskal = KruskalAlgorithm.run(graph);
+            System.out.println("Kruskal result -> Cost: " + resultKruskal.getTotalCost() +
+                    " | Time: " + resultKruskal.getExecutionTimeMs() + " nano sec" +
+                    " | Ops: " + resultKruskal.getOperationsCount());
+            JSONWriter.writeToJson("results/Kruskal_" + graph.id() + ".json", resultKruskal);
+
+            // ---- Prim ----
+            MSTResult resultPrim = PrimAlgorithm.computeMST(graph);
+            System.out.println("Prim result -> Cost: " + resultPrim.getTotalCost() +
+                    " | Time: " + resultPrim.getExecutionTimeMs() + " nano sec" +
+                    " | Ops: " + resultPrim.getOperationsCount());
+            JSONWriter.writeToJson("results/Prim_" + graph.id() + ".json", resultPrim);
         }
+
+        System.out.println("\nMST Analysis Complete");
     }
 }

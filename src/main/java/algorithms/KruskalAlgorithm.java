@@ -6,7 +6,6 @@ import model.MSTResult;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 public class KruskalAlgorithm {
     public static MSTResult run(Graph graph) {
         long startTime = System.nanoTime();
@@ -14,11 +13,9 @@ public class KruskalAlgorithm {
         List<Edge> edges = new ArrayList<>(graph.edges());
         Collections.sort(edges);
         operations += edges.size();
-
         DisjointSet uf = new DisjointSet();
         List<Edge> mstEdges = new ArrayList<>();
         int totalCost = 0;
-
         for (String v : graph.getVertices()) {
             uf.add(v);
             operations++;
@@ -32,17 +29,16 @@ public class KruskalAlgorithm {
                 mstEdges.add(e);
                 totalCost += e.getWeight();
             }
-
             if (mstEdges.size() == graph.V() - 1) break;
         }
         long endTime = System.nanoTime();
-        long durationMs = (endTime - startTime) / 1_000_000;
+        long durationNs = endTime - startTime;
         return new MSTResult(
                 "Kruskal",
                 graph.id(),
                 mstEdges,
                 totalCost,
-                durationMs,
+                durationNs,
                 operations
         );
     }
