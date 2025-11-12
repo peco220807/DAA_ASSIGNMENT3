@@ -1,8 +1,6 @@
 package model;
-
 import graph.Edge;
 import java.util.List;
-
 public class MSTResult {
     private final String algorithm;
     private final List<Edge> edges;
@@ -15,7 +13,7 @@ public class MSTResult {
                      int totalCost, long executionTimeMs, long operationsCount) {
         this.algorithm = algorithm;
         this.graphId = graphId;
-        this.edges = List.copyOf(edges);
+        this.edges = List.copyOf(edges); // Используем изменяемый список
         this.totalCost = totalCost;
         this.executionTimeMs = executionTimeMs;
         this.operationsCount = operationsCount;

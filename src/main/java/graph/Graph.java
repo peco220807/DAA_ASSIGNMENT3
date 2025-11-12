@@ -15,13 +15,11 @@ public class Graph {
         this.edges = new ArrayList<>();
         this.adj = new HashMap<>();
         this.indexMap = new HashMap<>();
-
         for (int i = 0; i < vertices.size(); i++) {
             String vertex = vertices.get(i);
             indexMap.put(vertex, i);
             adj.put(vertex, new ArrayList<>());
         }
-
         for (Edge e : inputEdges) {
             adj.get(e.getFrom()).add(e);
             edges.add(e);
@@ -31,7 +29,6 @@ public class Graph {
             }
         }
     }
-
     public String id() { return id; }
     public int V() { return vertices.size(); }
     public int E() { return edges.size(); }

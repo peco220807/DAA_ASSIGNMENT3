@@ -1,10 +1,8 @@
 package algorithms;
-
 import graph.Graph;
 import graph.Edge;
 import model.MSTResult;
 import java.util.*;
-
 public class PrimAlgorithm {
     public static List<Edge> findMST(Graph graph, long[] operations) {
         List<Edge> mstEdges = new ArrayList<>();
@@ -16,14 +14,12 @@ public class PrimAlgorithm {
 
         String start = graph.nameOf(0);
         inMST[0] = true;
-
         Set<String> addedEdges = new HashSet<>();
         for (Edge e : graph.adj(start)) {
             String key = e.getFrom() + "-" + e.getTo();
             if (addedEdges.add(key)) pq.add(e);
             operations[0]++;
         }
-
         while (!pq.isEmpty() && mstEdges.size() < numVertices - 1) {
             Edge e = pq.poll();
             operations[0]++;
@@ -51,7 +47,6 @@ public class PrimAlgorithm {
         }
         return mstEdges;
     }
-
     public static MSTResult computeMST(Graph graph) {
         long[] operations = {0};
         long start = System.nanoTime();

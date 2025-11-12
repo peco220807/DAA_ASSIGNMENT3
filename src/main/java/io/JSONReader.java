@@ -5,9 +5,7 @@ import graph.Graph;
 import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
-
 public class JSONReader {
-
     public static Graph loadGraph(String path) {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -18,7 +16,6 @@ public class JSONReader {
                 System.err.println("No graphs found in file: " + path);
                 return null;
             }
-
             Map<String, Object> graphData = graphs.get(0);
             return buildGraphFromMap(graphData);
         } catch (Exception e) {
@@ -27,16 +24,13 @@ public class JSONReader {
             return null;
         }
     }
-
     private static Graph buildGraphFromMap(Map<String, Object> graphData) {
         try {
             String graphId = String.valueOf(graphData.getOrDefault("id", "Graph"));
             List<String> nodes = (List<String>) graphData.get("nodes");
             List<Map<String, Object>> edgesJson = (List<Map<String, Object>>) graphData.get("edges");
-
             if (nodes == null) nodes = new ArrayList<>();
             if (edgesJson == null) edgesJson = new ArrayList<>();
-
             List<Edge> edges = edgesJson.stream()
                     .map(e -> new Edge(
                             (String) e.get("from"),
@@ -44,7 +38,6 @@ public class JSONReader {
                             ((Number) e.get("weight")).intValue()
                     ))
                     .collect(Collectors.toList());
-
             return new Graph(graphId, false, nodes, edges);
         } catch (Exception e) {
             System.err.println("Error creating graph from map: " + e.getMessage());
@@ -52,7 +45,6 @@ public class JSONReader {
             return null;
         }
     }
-
     public static List<Graph> loadGraphs(String file) {
         return null;
     }

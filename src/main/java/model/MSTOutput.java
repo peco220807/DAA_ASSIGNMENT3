@@ -1,7 +1,6 @@
 package model;
 import graph.Edge;
 import java.util.List;
-
 public class MSTOutput {
     public String graphId;
     public InputStats inputStats;

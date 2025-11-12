@@ -1,5 +1,4 @@
 package cli;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -13,7 +12,6 @@ import model.MSTResult;
 
 import java.io.File;
 import java.util.*;
-
 public class BenchmarkRunner {
     public static void main(String[] args) throws Exception {
         String[] files = {
@@ -35,7 +33,6 @@ public class BenchmarkRunner {
                 System.out.println("Skipping disconnected graph: " + graph.id());
                 continue;
             }
-
             MSTResult prim = PrimAlgorithm.computeMST(graph);
             MSTResult kruskal = KruskalAlgorithm.run(graph);
 
@@ -49,10 +46,8 @@ public class BenchmarkRunner {
 
             graphNode.set("prim", makeAlgoNode(mapper, prim));
             graphNode.set("kruskal", makeAlgoNode(mapper, kruskal));
-
             resultsArray.add(graphNode);
 
-            // Append to CSV file
             String sizeLabel = getSizeLabel(file);
             CSVWriter.appendCSV(
                     "src/main/resources/results.csv",
@@ -86,7 +81,6 @@ public class BenchmarkRunner {
             edgeNode.put("weight", e.getWeight());
             edgesArray.add(edgeNode);
         }
-
         algoNode.set("mst_edges", edgesArray);
         algoNode.put("total_cost", result.getTotalCost());
         algoNode.put("operations_count", result.getOperationsCount());
@@ -94,7 +88,6 @@ public class BenchmarkRunner {
 
         return algoNode;
     }
-
     private static boolean isConnected(Graph graph) {
         if (graph.V() == 0) return true;
         Set<String> visited = new HashSet<>();
@@ -115,7 +108,6 @@ public class BenchmarkRunner {
         }
         return visited.size() == graph.V();
     }
-
     private static String getSizeLabel(String filePath) {
         if (filePath.contains("small")) return "SMALL";
         if (filePath.contains("medium")) return "MEDIUM";
