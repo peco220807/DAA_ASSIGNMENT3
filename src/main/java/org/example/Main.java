@@ -29,7 +29,7 @@ public class Main {
                 System.out.println(edge);
             }
             System.out.println("Total Cost: " + result.getTotalCost());
-            System.out.println("Algorithm Duration: " + result.getExecutionTimeMs() + " ms");
+            System.out.println("Algorithm Duration: " + result.getExecutionTimeMs() + " ns");
             Edge edgeToRemove = result.getEdges().get(0);
             System.out.println("Removing edge: " + edgeToRemove);
             MSTResult updatedResult = KruskalAlgorithm.updateMSTAfterEdgeRemoval(graph, result.getEdges(), edgeToRemove);

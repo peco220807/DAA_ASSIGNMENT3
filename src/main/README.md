@@ -29,4 +29,5 @@ Results are exported to:
 - `results.csv` — summary for tables or charts
 
 ![img.png](img.png)
-
+---
+# BONUS TASK RUNS IN MAIN AND OUTPUT ON TERMINAL
